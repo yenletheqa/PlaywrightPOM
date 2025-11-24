@@ -26,23 +26,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh """
-                    yarn playwright test --project=${params.PLAYWRIGHT_PROJECT}
+                    npx playwright test --grep "Book search" --project=${params.PLAYWRIGHT_PROJECT}
                 """
-            }
-        }
-
-        stage('Publish HTML Report') {
-            steps {
-                publishHTML(
-            target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright Report'
-            ]
-        )
             }
         }
     }

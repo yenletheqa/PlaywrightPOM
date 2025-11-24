@@ -34,5 +34,5 @@ jobs:
               run: yarn install
 
             - name: Run Playwright tests
-              run: yarn playwright test --grep "Book search" --project=${{ matrix.project }}
+              run: npx playwright test --grep "Book search" --project=${{ matrix.project }}
 
