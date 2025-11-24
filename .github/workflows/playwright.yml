@@ -34,7 +34,7 @@ jobs:
               run: yarn install
 
             - name: Run Playwright tests
-              run: yarn playwright --grep "Book search" --project=${{ matrix.project }}
+              run: yarn playwright test --grep "Book search" --project=${{ matrix.project }}
 
             - name: Upload Playwright Report
               uses: actions/upload-artifact@v4
