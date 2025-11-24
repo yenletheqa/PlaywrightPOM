@@ -1,0 +1,36 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [chromium, firefox, webkit]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 25
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Playwright tests
+        run: yarn playwright test --project=${{ matrix.project }}
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report-${{ matrix.project }}
+          path: playwright-report/
