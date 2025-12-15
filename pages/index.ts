@@ -1,3 +1,3 @@
-export * from './HomePage';
-export * from './SearchResultsPage';
-export * from './BookDetailsPage';
+export * from './home.page';
+export * from './search.results.page';
+export * from './book.details.page';

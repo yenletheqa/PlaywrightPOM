@@ -8,6 +8,10 @@
     "@types/node": "^24.10.1"
   },
   "scripts": {
-    "postinstall": "npx playwright install"
+    "postinstall": "npx playwright install",
+    "report": "npx playwright show-report",
+    "all": "npx playwright test --project chromium",
+    "ui": "npx playwright test book.spec.ts --project chromium",
+    "api": "npx playwright test spotify.spec.ts --project chromium"
   }
 }
